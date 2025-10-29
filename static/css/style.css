@@ -1,0 +1,174 @@
+
+    .nav-toggle {
+  --color: #03024E;
+  width: 70px;
+  height: 56px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  z-index: 50;
+}
+
+@media (max-width: 768px) {
+  .nav-toggle {
+    width: 40px;
+    height: 53px;
+  }
+}
+
+
+    .nav-toggle svg {
+      fill: none;
+      stroke: var(--color);
+      stroke-width: 7px;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .nav-toggle svg use:nth-of-type(1) {
+      opacity: 1;
+      stroke-dashoffset: 221;
+      stroke-dasharray: 46 249;
+      transition: stroke-dashoffset 0.12s linear 0.2s,
+        stroke-dasharray 0.12s linear 0.2s, opacity 0s linear 0.2s;
+    }
+
+    .nav-toggle svg use:nth-of-type(2) {
+      animation: stroke-animation-reverse 1.2s ease-out forwards;
+    }
+
+    .nav-toggle input {
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      z-index: 2;
+      cursor: pointer;
+      opacity: 0;
+    }
+
+    .nav-toggle input:checked + svg use:nth-of-type(1) {
+      stroke-dashoffset: 175;
+      stroke-dasharray: 0 295;
+      opacity: 0;
+      transition: stroke-dashoffset 0.07s linear 0.07s,
+        stroke-dasharray 0.07s linear 0.07s, opacity 0s linear 0.14s;
+    }
+
+    .nav-toggle input:checked + svg use:nth-of-type(2) {
+      animation: stroke-animation 1.2s ease-out forwards;
+    }
+
+    @keyframes stroke-animation {
+      0% {
+        stroke-dashoffset: 295;
+        stroke-dasharray: 25 270;
+      }
+      50% {
+        stroke-dashoffset: 68;
+        stroke-dasharray: 59 236;
+      }
+      65% {
+        stroke-dashoffset: 59;
+        stroke-dasharray: 59 236;
+      }
+      100% {
+        stroke-dashoffset: 68;
+        stroke-dasharray: 59 236;
+      }
+    }
+
+    @keyframes stroke-animation-reverse {
+      0% {
+        stroke-dashoffset: 68;
+        stroke-dasharray: 59 236;
+      }
+      50% {
+        stroke-dashoffset: 290;
+        stroke-dasharray: 25 270;
+      }
+      65% {
+        stroke-dashoffset: 295;
+        stroke-dasharray: 25 270;
+      }
+      100% {
+        stroke-dashoffset: 290;
+        stroke-dasharray: 25 270;
+      }
+    }
+
+    /* === Sliding Menu Panel === */
+    #menuPanel {
+      transition: transform 0.5s ease-in-out, background 0.5s ease;
+      transform: translateX(100%);
+      background: rgba(3, 2, 78, 0.7); /* semi-transparent blue */
+      backdrop-filter: blur(10px);
+    }
+
+    #menuPanel.open {
+      transform: translateX(0);
+    }
+
+    .menu-link {
+      color: white;
+      display: block;
+      text-align: left;
+      padding: 12px 24px;
+      font-size: 1.15rem;
+      font-weight: 500;
+      border-radius: 8px;
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+
+    .menu-link:hover {
+      background: rgba(255, 255, 255, 0.15);
+    }
+
+    .menu-link.active {
+      background: rgba(255, 255, 255, 0.25);
+    }
+
+    /* === Navbar Scroll Effect === */
+    .navbar {
+      transition: all 0.4s ease;
+      background: transparent;
+      backdrop-filter: none;
+    }
+
+    .navbar.scrolled {
+      background: rgba(6, 3, 141, 0.8);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    /* === White Language Toggle when Menu Open === */
+    .lang-white #lang-label,
+    .lang-white #mobile-lang-label {
+      color: white !important;
+    }
+
+    .lang-white .peer + div {
+      background-color: rgba(255,255,255,0.4) !important;
+    }
+
+    .lang-white .peer:checked + div {
+      background-color: #ff9933 !important;
+    }
+
+    .lang-white .peer + div > div {
+      background-color: white !important;
+    }
+    /* === Change Hamburger Color When Sidebar Opens === */
+.lang-white .nav-toggle {
+  --color: #ffffff; /* turns hamburger lines white */
+}
+
+.nav-toggle svg {
+  transition: stroke 0.3s ease; /* smooth color transition */
+}
+
+h1{
+    font-family: "Montserrat", sans-serif;
+
+}

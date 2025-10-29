@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="ta">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>People's Voice - Polling Insights</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="./static/css/style.css">
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Geist:wght@100..900&family=IBM+Plex+Serif:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Michroma&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Play:wght@400;700&family=Roboto:ital,wght@0,100..900;1,100..900&family=Rubik:ital,wght@0,300..900;1,300..900&family=Saira:ital,wght@0,100..900;1,100..900&family=Zalando+Sans+SemiExpanded:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
+
+</head>
+
+<body class=" font-sans overflow-x-hidden">
+
+  <!-- Navbar -->
+  <nav id="navbar" class="navbar fixed w-full top-0 z-50 transition-all duration-500">
+    <div class="max-w-7xl mx-auto px-6 md:px-10 flex justify-between items-center h-16 text-[white]">
+
+      <!-- Logo -->
+      <a id="logoText" href="#" class="text-xl font-bold tracking-wide text-[#03024E]">People's Voice</a>
+
+      <!-- Right Section -->
+      <div class="flex items-center space-x-4">
+
+        <!-- Desktop Toggle -->
+        <div class="hidden md:flex items-center space-x-2">
+          <span id="lang-label" class="text-[#03024E] font-semibold text-sm">TAMIL</span>
+          <label class="relative inline-flex items-center cursor-pointer">
+            <input type="checkbox" class="sr-only peer" id="lang-toggle">
+            <div class="w-10 h-6 bg-gray-300 rounded-full peer-checked:bg-[#837AEC] transition-colors"></div>
+            <div class="absolute left-[2px] top-[2px] w-5 h-5 bg-[#03024E] rounded-full shadow-md peer-checked:translate-x-[18px] transition-transform duration-300"></div>
+          </label>
+        </div>
+
+        <!-- Mobile Toggle -->
+        <div class="flex md:hidden items-center space-x-2">
+          <span id="mobile-lang-label" class="text-[#03024E] font-semibold text-sm">TAMIL</span>
+          <label class="relative inline-flex items-center cursor-pointer">
+            <input type="checkbox" class="sr-only peer" id="mobile-lang-toggle">
+            <div class="w-10 h-6 bg-gray-300 rounded-full peer-checked:bg-blue-500 transition-colors"></div>
+            <div class="absolute left-[2px] top-[2px] w-5 h-5 bg-[#03024E] rounded-full shadow-md peer-checked:translate-x-[18px] transition-transform duration-300"></div>
+          </label>
+        </div>
+
+        <!-- ✅ Animated SVG Menu Button -->
+        <div class="nav-toggle">
+          <input type="checkbox" id="menuToggle" />
+          <svg viewBox="0 0 100 56">
+            <use xlink:href="#menu"></use>
+            <use xlink:href="#menu"></use>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ✅ Sliding Menu Panel -->
+  <div id="menuPanel"
+       class="fixed top-0 right-0 h-full flex flex-col pt-20 space-y-4 shadow-2xl
+              w-3/4 md:w-1/4 z-20 p-8">
+    <a href="#polls" class="menu-link active">Live Polls</a>
+    <a href="#analysis" class="menu-link">Public Analysis</a>
+    <a href="#reports" class="menu-link">Reports</a>
+    <a href="#contact" class="menu-link">Contact</a>
+  </div>
+
+  <!-- SVG Symbol -->
+  <svg xmlns="http://www.w3.org/2000/svg" style="display:none;">
+    <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 56" id="menu">
+      <path d="M48.33,45.6H18a14.17,14.17,0,0,1,0-28.34H78.86a17.37,17.37,0,0,1,0,34.74H42.33l-21-21.26L47.75,4" />
+    </symbol>
+  </svg>
+
+  <!-- Hero Section -->
+  <section class="min-h-screen flex flex-col justify-center items-center text-center px-6 ">
+    <div class="max-w-5xl">
+      <h1 class="text-4xl md:text-6xl font-light text-gray-900 leading-tight">
+        I’m  
+        <span class="font-serif font-bold text-[#03024E]">People’s</span>
+        <img src="./static/images/h3.jpg" alt="Vote Icon" class="inline-block w-14 h-14 rounded-full mx-2 align-middle shadow-md">
+        <span class="font-serif font-bold text-[#03024E]">Voice</span>,
+        <br />
+        your window into  
+        <span class="italic text-gray-800">Real-Time Poll Insights</span>  
+        <br />
+        <span class="font-serif text-4xl md:text-5xl text-[#06038D]">for Tamil Nadu Elections 2026</span>
+      </h1>
+
+      <p class="text-gray-600 mt-6 max-w-2xl mx-auto text-lg">
+        Discover live predictions, party standings and voter sentiment analysis - powered by data-driven insights and real public opinion.
+      </p>
+
+      <div class="mt-10">
+        <a href="#polls" class="bg-[#FF9933] hover:bg-[#ea580c] text-[white] px-8 py-3 rounded-full font-semibold shadow-md transition">
+          Explore Poll Insights
+        </a>
+      </div>
+    </div>
+  </section>
+
+
+<section class="max-w-7xl mx-auto p-6 bg-white rounded-3xl shadow-sm mt-10">
+  <h1 class="text-4xl md:text-5xl font-bold text-[#03024E] mb-2 uppercase">Vote Map & Seats</h1>
+  
+  <!-- Subtext starting from half of the screen -->
+  <p class="text-gray-600 text-lg mb-8 max-w-[50%] ml-auto leading-relaxed pt-10">
+Explore how each party’s vote share translated into actual seats. Dive deeper into the electoral map to understand regional strengths, alliance impact and overall seat performance.  </p>
+
+  <!-- 🔘 Modern Filter Section -->
+  <div class="flex flex-wrap items-center mt-10 gap-4 mb-8 bg-gray-50 border border-gray-200 rounded-2xl p-4 shadow-sm w-full md:w-[70%]">
+    <!-- Toggle Buttons -->
+    <div class="flex items-center gap-2">
+      <button id="ac-btn"
+        class="px-5 py-2.5 rounded-full font-medium transition-all active-btn">
+        Assembly (AC)
+      </button>
+      <button id="pc-btn"
+        class="px-5 py-2.5 rounded-full font-medium transition-all inactive-btn">
+        Parliament (PC)
+      </button>
+    </div>
+
+    <!-- Year Selector -->
+    <div class="flex items-center gap-2 ml-auto">
+      <label for="year-select" class="font-medium text-gray-700">Select Year:</label>
+      <select id="year-select" class="border border-gray-300 rounded-full px-4 py-2 bg-white shadow-sm focus:ring-2 focus:ring-[#03024E] transition">
+        <option value="2021">2021</option>
+        <option value="2016">2016</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- Main Alliances -->
+  <div id="alliances" class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
+    <!-- Cards will be injected here -->
+  </div>
+<!-- Detailed Table -->
+<div class="overflow-x-auto mt-8">
+  <table class="min-w-full border border-gray-300 text-sm text-left">
+    <thead class="bg-gray-100">
+      <tr>
+        <th class="py-3 px-4 border font-semibold text-gray-700 w-32">Alliance</th>
+        <th class="py-3 px-4 border font-semibold text-gray-700">Party</th>
+        <th class="py-3 px-4 border font-semibold text-gray-700 text-center">Contested</th>
+        <th class="py-3 px-4 border font-semibold text-gray-700 text-center">Won</th>
+        <th class="py-3 px-4 border font-semibold text-gray-700 text-center">Votes (approx)</th>
+        <th class="py-3 px-4 border font-semibold text-gray-700 text-center">Vote Share (%)</th>
+        <th class="py-3 px-4 border font-semibold text-gray-700 text-center">Contested Vote Share (%)</th>
+      </tr>
+    </thead>
+    <tbody id="party-table"></tbody>
+  </table>
+</div>
+
+<!-- Chart -->
+<div class="bg-gray-50 rounded-xl p-6 mt-8 shadow-sm">
+  <canvas id="voteChart" height="140"></canvas>
+</div>
+
+</section>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+const data = {
+  AC: {
+    2021: {
+      alliances: [
+        { name: "NDA", totalSeats: 234, won: 84, voteShare: 43, color: "#2563eb" },
+        { name: "SPA", totalSeats: 234, won: 150, voteShare: 47, color: "#10b981" },
+      ],
+      parties: [
+        { party: "All India Anna Dravida Munnetra Kazhagam", alliance: "NDA", contested: 191, won: 66, voteShare: 33.5, contestedVoteShare: 40.8 },
+        { party: "Pattali Makkal Katchi", alliance: "NDA", contested: 23, won: 5, voteShare: 3.8, contestedVoteShare: 37.9 },
+        { party: "Bharatiya Janta Party", alliance: "NDA", contested: 20, won: 4, voteShare: 2.6, contestedVoteShare: 34.5 },
+        { party: "Dravida Munetra Kazhagam", alliance: "SPA", contested: 188, won: 133, voteShare: 38, contestedVoteShare: 46.8 },
+        { party: "Indian National Congress", alliance: "SPA", contested: 25, won: 18, voteShare: 4.3, contestedVoteShare: 41.6 },
+        { party: "Viduthalai Chiruthaigal Katchi", alliance: "SPA", contested: 6, won: 4, voteShare: 1, contestedVoteShare: 42.7 },
+        { party: "Communist Party Of India", alliance: "SPA", contested: 6, won: 2, voteShare: 1.1, contestedVoteShare: 43.7 },
+        { party: "Communist Party Of India (Marxist)", alliance: "SPA", contested: 6, won: 2, voteShare: 0.9, contestedVoteShare: 35.5 },
+        { party: "Indian Union Muslim League", alliance: "SPA", contested: 3, won: 0, voteShare: 0.5, contestedVoteShare: 38.7 },
+      ]
+    },
+    2016: {
+      alliances: [
+        { name: "NDA", totalSeats: 234, won: 136, voteShare: 41, color: "#2563eb" },
+        { name: "SPA", totalSeats: 234, won: 98, voteShare: 39, color: "#10b981" },
+      ],
+      parties: [
+        { party: "All India Anna Dravida Munnetra Kazhagam", alliance: "NDA", contested: 227, won: 134, voteShare: 40.9, contestedVoteShare: 44.0 },
+        { party: "Bharatiya Janta Party", alliance: "NDA", contested: 188, won: 0, voteShare: 2.8, contestedVoteShare: 35.2 },
+        { party: "Pattali Makkal Katchi", alliance: "NDA", contested: 31, won: 0, voteShare: 5.3, contestedVoteShare: 34.8 },
+        { party: "Dravida Munetra Kazhagam", alliance: "SPA", contested: 176, won: 89, voteShare: 31.6, contestedVoteShare: 42.3 },
+        { party: "Indian National Congress", alliance: "SPA", contested: 41, won: 8, voteShare: 6.5, contestedVoteShare: 38.1 },
+        { party: "Communist Party Of India", alliance: "SPA", contested: 25, won: 0, voteShare: 1.2, contestedVoteShare: 32.9 },
+        { party: "Communist Party Of India (Marxist)", alliance: "SPA", contested: 25, won: 1, voteShare: 1.1, contestedVoteShare: 30.7 },
+      ]
+    }
+  }
+};
+
+const yearSelect = document.getElementById("year-select");
+const tableBody = document.getElementById("party-table");
+const ctx = document.getElementById("voteChart");
+let currentType = "AC";
+let chartInstance;
+
+// === Render Data ===
+function renderData() {
+  const year = yearSelect ? yearSelect.value : "2021";
+  const current = data[currentType]?.[year];
+
+  if (!current) {
+    tableBody.innerHTML = `<tr><td colspan="7" class="text-center py-4 text-gray-500">No data available</td></tr>`;
+    return;
+  }
+
+  const { alliances, parties } = current;
+  const allianceOrder = alliances.map(a => a.name);
+  let html = "";
+
+  allianceOrder.forEach(allianceName => {
+    const groupParties = parties.filter(p => p.alliance === allianceName);
+    const allianceColor = alliances.find(a => a.name === allianceName)?.color || "#ccc";
+
+    groupParties.forEach((p, i) => {
+      const votes = (p.voteShare * 100000).toLocaleString();
+
+      html += `
+        <tr class="hover:bg-gray-50 transition">
+          ${i === 0 ? `
+            <td rowspan="${groupParties.length}" class="border-l-4"
+                style="border-color:${allianceColor}; text-align:center; font-weight:600; color:#111;">
+              ${allianceName}
+            </td>` : ""}
+          <td class="py-3 px-4 border text-gray-800">${p.party}</td>
+          <td class="py-3 px-4 border text-center">${p.contested}</td>
+          <td class="py-3 px-4 border text-center">${p.won}</td>
+          <td class="py-3 px-4 border text-center">${votes}</td>
+          <td class="py-3 px-4 border text-center">${p.voteShare}%</td>
+          <td class="py-3 px-4 border text-center">${p.contestedVoteShare}%</td>
+        </tr>`;
+    });
+  });
+
+  tableBody.innerHTML = html;
+
+  // === Chart Comparison (2021 vs 2016) ===
+  const partiesList = [...new Set(Object.values(data[currentType]["2021"].parties.map(p => p.party)))];
+  const values2021 = partiesList.map(p =>
+    data[currentType]["2021"].parties.find(x => x.party === p)?.voteShare || 0
+  );
+  const values2016 = partiesList.map(p =>
+    data[currentType]["2016"].parties.find(x => x.party === p)?.voteShare || 0
+  );
+
+  if (chartInstance) chartInstance.destroy();
+  chartInstance = new Chart(ctx, {
+    type: "bar",
+    data: {
+      labels: partiesList,
+      datasets: [
+        {
+          label: "2021 Vote Share (%)",
+          data: values2021,
+          backgroundColor: "#2563eb80",
+          borderColor: "#2563eb",
+          borderWidth: 1
+        },
+        {
+          label: "2016 Vote Share (%)",
+          data: values2016,
+          backgroundColor: "#10b98180",
+          borderColor: "#10b981",
+          borderWidth: 1
+        }
+      ]
+    },
+    options: {
+      responsive: true,
+      interaction: { mode: "index", intersect: false },
+      plugins: {
+        legend: { position: "top" },
+        title: { display: true, text: "Vote Share Comparison (2016 vs 2021)" }
+      },
+      scales: {
+        y: {
+          beginAtZero: true,
+          title: { display: true, text: "Vote Share (%)" }
+        },
+        x: {
+          ticks: { autoSkip: false, maxRotation: 45, minRotation: 45 }
+        }
+      }
+    }
+  });
+}
+
+if (yearSelect) yearSelect.addEventListener("change", renderData);
+renderData();
+</script>
+
+
+
+
+
+<script src="./static/js/script.js"></script>
+
+</body>
+</html>
