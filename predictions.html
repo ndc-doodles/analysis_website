@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="ta">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>People's Voice - Polling Insights</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="./static/css/style.css">
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Geist:wght@100..900&family=IBM+Plex+Serif:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Michroma&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Play:wght@400;700&family=Roboto:ital,wght@0,100..900;1,100..900&family=Rubik:ital,wght@0,300..900;1,300..900&family=Saira:ital,wght@0,100..900;1,100..900&family=Zalando+Sans+SemiExpanded:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
+
+</head>
+
+<body class="  overflow-x-hidden">
+
+  <!-- Navbar -->
+  <nav id="navbar" class="navbar fixed w-full top-0 z-50 transition-all duration-500">
+    <div class="max-w-7xl mx-auto px-6 md:px-10 flex justify-between items-center h-16 text-[white]">
+
+      <!-- Logo -->
+      <a id="logoText" href="index.html" class="text-xl font-bold tracking-wide text-[#03024E]">People's Voice</a>
+
+      <!-- Right Section -->
+      <div class="flex items-center space-x-4">
+
+        <!-- Desktop Toggle -->
+        <div class="hidden md:flex items-center space-x-2">
+          <span id="lang-label" class="text-[#03024E] font-semibold text-sm">TAMIL</span>
+          <label class="relative inline-flex items-center cursor-pointer">
+            <input type="checkbox" class="sr-only peer" id="lang-toggle">
+            <div class="w-10 h-6 bg-gray-300 rounded-full peer-checked:bg-[#837AEC] transition-colors"></div>
+            <div class="absolute left-[2px] top-[2px] w-5 h-5 bg-[#03024E] rounded-full shadow-md peer-checked:translate-x-[18px] transition-transform duration-300"></div>
+          </label>
+        </div>
+
+        <!-- Mobile Toggle -->
+        <div class="flex md:hidden items-center space-x-2">
+          <span id="mobile-lang-label" class="text-[#03024E] font-semibold text-sm">TAMIL</span>
+          <label class="relative inline-flex items-center cursor-pointer">
+            <input type="checkbox" class="sr-only peer" id="mobile-lang-toggle">
+            <div class="w-10 h-6 bg-gray-300 rounded-full peer-checked:bg-blue-500 transition-colors"></div>
+            <div class="absolute left-[2px] top-[2px] w-5 h-5 bg-[#03024E] rounded-full shadow-md peer-checked:translate-x-[18px] transition-transform duration-300"></div>
+          </label>
+        </div>
+
+        <!-- ✅ Animated SVG Menu Button -->
+        <div class="nav-toggle">
+          <input type="checkbox" id="menuToggle" />
+          <svg viewBox="0 0 100 56">
+            <use xlink:href="#menu"></use>
+            <use xlink:href="#menu"></use>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ✅ Sliding Menu Panel -->
+  <div id="menuPanel"
+       class="fixed top-0 right-0 h-full flex flex-col pt-20 space-y-4 shadow-2xl
+              w-3/4 md:w-1/4 z-50 p-8">
+    <a href="index.html" class="menu-link ">Home</a>
+    <a href="predictions.html" class="menu-link active">Polling & Predictions</a>
+    <a href="report.html" class="menu-link">Reports</a>
+  </div>
+
+  <!-- SVG Symbol -->
+  <svg xmlns="http://www.w3.org/2000/svg" style="display:none;">
+    <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 56" id="menu">
+      <path d="M48.33,45.6H18a14.17,14.17,0,0,1,0-28.34H78.86a17.37,17.37,0,0,1,0,34.74H42.33l-21-21.26L47.75,4" />
+    </symbol>
+  </svg>
+
+
+
+
+
+<!-- Polling & Predictions Section -->
+<section id="polling-section" class="w-full py-24 bg-white flex justify-center items-center mt-20 ">
+  <div class="max-w-7xl text-center px-6">
+    <h1 class="text-3xl md:text-5xl font-semibold text-[#03024E] leading-snug uppercase">
+      We bring you <span class="text-[#837AEC] font-bold">polling insights</span> 
+      and <span class="text-[#837AEC] font-bold">predictions</span> 
+      from different campaigns across the state.
+    </h1>
+    <p class="mt-4 text-gray-600 text-lg">
+      Explore what various campaigns forecast and how public sentiment is shaping up.
+    </p>
+  </div>
+</section>
+
+
+
+
+<!-- Include AOS -->
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+<section id="poll-predictions" class="max-w-7xl mx-auto p-6 bg-white rounded-3xl shadow-sm mt-0">
+  <!-- Heading -->
+  <h1 class="text-3xl md:text-4xl font-bold text-[#03024E] mb-2 uppercase" data-aos="fade-up">
+    Polling & Predictions
+  </h1>
+
+  <!-- Subtext -->
+  <p class="text-gray-600 text-lg mb-10 md:max-w-[55%] ml-auto leading-relaxed pt-10" data-aos="fade-up" data-aos-delay="100">
+    Explore insights from various campaign polls and social media surveys predicting seat outcomes for Tamil Nadu’s major alliances.
+  </p>
+
+  <!-- Campaign Cards -->
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+
+    <!-- Campaign 1 -->
+    <div class="bg-gray-50 p-6 rounded-2xl shadow-md hover:shadow-lg hover:-translate-y-1 transition-all duration-300" data-aos="zoom-in">
+      <div class="mb-4">
+        <h3 class="text-2xl font-bold text-[#03024E] mb-1">NewsTN Campaign</h3>
+        <p class="text-sm text-gray-500">Organized by: <b>PublicPulse & Social Trend Polls</b></p>
+      </div>
+
+      <!-- NDA -->
+      <div class="mt-4">
+        <div class="flex justify-between text-sm mb-1 font-medium text-gray-700">
+          <span>NDA</span><span>62%</span>
+        </div>
+        <div class="w-full bg-gray-200 rounded-full h-2 overflow-hidden">
+          <div class="bg-green-600 h-2 rounded-full w-0 news-nda-bar transition-all duration-700"></div>
+        </div>
+        <ul class="text-gray-600 text-sm mt-2 space-y-1">
+          <li>• Predicted seats: <b>145–160</b></li>
+          <li>• Public sentiment: <b>54%</b></li>
+          <li>• Rural performance: <b>Strong</b></li>
+        </ul>
+      </div>
+
+      <!-- SPA -->
+      <div class="mt-6">
+        <div class="flex justify-between text-sm mb-1 font-medium text-gray-700">
+          <span>SPA</span><span>33%</span>
+        </div>
+        <div class="w-full bg-gray-200 rounded-full h-2 overflow-hidden">
+          <div class="bg-blue-600 h-2 rounded-full w-0 news-spa-bar transition-all duration-700"></div>
+        </div>
+        <ul class="text-gray-600 text-sm mt-2 space-y-1">
+          <li>• Predicted seats: <b>70–90</b></li>
+          <li>• Public sentiment: <b>34%</b></li>
+          <li>• Rural performance: <b>Moderate</b></li>
+        </ul>
+      </div>
+
+      <!-- Others -->
+      <div class="mt-6">
+        <div class="flex justify-between text-sm mb-1 font-medium text-gray-700">
+          <span>Others</span><span>5%</span>
+        </div>
+        <div class="w-full bg-gray-200 rounded-full h-2 overflow-hidden">
+          <div class="bg-yellow-500 h-2 rounded-full w-0 news-others-bar transition-all duration-700"></div>
+        </div>
+        <ul class="text-gray-600 text-sm mt-2 space-y-1">
+          <li>• Predicted seats: <b>5–10</b></li>
+          <li>• Public sentiment: <b>12%</b></li>
+          <li>• Rural performance: <b>Weak</b></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Campaign 2 -->
+    <div class="bg-gray-50 p-6 rounded-2xl shadow-md hover:shadow-lg hover:-translate-y-1 transition-all duration-300" data-aos="zoom-in" data-aos-delay="100">
+      <div class="mb-4">
+        <h3 class="text-2xl font-bold text-[#03024E] mb-1">TNVoice Poll</h3>
+        <p class="text-sm text-gray-500">Organized by: <b>LokPulse Analytics</b></p>
+      </div>
+
+      <!-- NDA -->
+      <div class="mt-4">
+        <div class="flex justify-between text-sm mb-1 font-medium text-gray-700">
+          <span>NDA</span><span>58%</span>
+        </div>
+        <div class="w-full bg-gray-200 rounded-full h-2 overflow-hidden">
+          <div class="bg-green-600 h-2 rounded-full w-0 tnvoice-nda-bar transition-all duration-700"></div>
+        </div>
+        <ul class="text-gray-600 text-sm mt-2 space-y-1">
+          <li>• Predicted seats: <b>145–160</b></li>
+          <li>• Public sentiment: <b>54%</b></li>
+          <li>• Rural performance: <b>Strong</b></li>
+        </ul>
+      </div>
+
+      <!-- SPA -->
+      <div class="mt-6">
+        <div class="flex justify-between text-sm mb-1 font-medium text-gray-700">
+          <span>SPA</span><span>36%</span>
+        </div>
+        <div class="w-full bg-gray-200 rounded-full h-2 overflow-hidden">
+          <div class="bg-blue-600 h-2 rounded-full w-0 tnvoice-spa-bar transition-all duration-700"></div>
+        </div>
+        <ul class="text-gray-600 text-sm mt-2 space-y-1">
+          <li>• Predicted seats: <b>70–90</b></li>
+          <li>• Public sentiment: <b>34%</b></li>
+          <li>• Rural performance: <b>Moderate</b></li>
+        </ul>
+      </div>
+
+      <!-- Others -->
+      <div class="mt-6">
+        <div class="flex justify-between text-sm mb-1 font-medium text-gray-700">
+          <span>Others</span><span>6%</span>
+        </div>
+        <div class="w-full bg-gray-200 rounded-full h-2 overflow-hidden">
+          <div class="bg-yellow-500 h-2 rounded-full w-0 tnvoice-others-bar transition-all duration-700"></div>
+        </div>
+        <ul class="text-gray-600 text-sm mt-2 space-y-1">
+          <li>• Predicted seats: <b>5–10</b></li>
+          <li>• Public sentiment: <b>12%</b></li>
+          <li>• Rural performance: <b>Weak</b></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Campaign 3 -->
+    <div class="bg-gray-50 p-6 rounded-2xl shadow-md hover:shadow-lg hover:-translate-y-1 transition-all duration-300" data-aos="zoom-in" data-aos-delay="200">
+      <div class="mb-4">
+        <h3 class="text-2xl font-bold text-[#03024E] mb-1">Regional Insight Poll</h3>
+        <p class="text-sm text-gray-500">Organized by: <b>PeopleVoice & TNStat</b></p>
+      </div>
+
+      <!-- NDA -->
+      <div class="mt-4">
+        <div class="flex justify-between text-sm mb-1 font-medium text-gray-700">
+          <span>NDA</span><span>60%</span>
+        </div>
+        <div class="w-full bg-gray-200 rounded-full h-2 overflow-hidden">
+          <div class="bg-green-600 h-2 rounded-full w-0 regional-nda-bar transition-all duration-700"></div>
+        </div>
+        <ul class="text-gray-600 text-sm mt-2 space-y-1">
+          <li>• Predicted seats: <b>145–160</b></li>
+          <li>• Public sentiment: <b>54%</b></li>
+          <li>• Rural performance: <b>Strong</b></li>
+        </ul>
+      </div>
+
+      <!-- SPA -->
+      <div class="mt-6">
+        <div class="flex justify-between text-sm mb-1 font-medium text-gray-700">
+          <span>SPA</span><span>32%</span>
+        </div>
+        <div class="w-full bg-gray-200 rounded-full h-2 overflow-hidden">
+          <div class="bg-blue-600 h-2 rounded-full w-0 regional-spa-bar transition-all duration-700"></div>
+        </div>
+        <ul class="text-gray-600 text-sm mt-2 space-y-1">
+          <li>• Predicted seats: <b>70–90</b></li>
+          <li>• Public sentiment: <b>34%</b></li>
+          <li>• Rural performance: <b>Moderate</b></li>
+        </ul>
+      </div>
+
+      <!-- Others -->
+      <div class="mt-6">
+        <div class="flex justify-between text-sm mb-1 font-medium text-gray-700">
+          <span>Others</span><span>8%</span>
+        </div>
+        <div class="w-full bg-gray-200 rounded-full h-2 overflow-hidden">
+          <div class="bg-yellow-500 h-2 rounded-full w-0 regional-others-bar transition-all duration-700"></div>
+        </div>
+        <ul class="text-gray-600 text-sm mt-2 space-y-1">
+          <li>• Predicted seats: <b>5–10</b></li>
+          <li>• Public sentiment: <b>12%</b></li>
+          <li>• Rural performance: <b>Weak</b></li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<script>
+  AOS.init({ duration: 900, offset: 150, once: true });
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        document.querySelector('.news-nda-bar').style.width = '62%';
+        document.querySelector('.news-spa-bar').style.width = '33%';
+        document.querySelector('.news-others-bar').style.width = '5%';
+
+        document.querySelector('.tnvoice-nda-bar').style.width = '58%';
+        document.querySelector('.tnvoice-spa-bar').style.width = '36%';
+        document.querySelector('.tnvoice-others-bar').style.width = '6%';
+
+        document.querySelector('.regional-nda-bar').style.width = '60%';
+        document.querySelector('.regional-spa-bar').style.width = '32%';
+        document.querySelector('.regional-others-bar').style.width = '8%';
+      }
+    });
+  }, { threshold: 0.3 });
+
+  observer.observe(document.querySelector('#poll-predictions'));
+</script>
+
+
+
+
+
+
+  
+<script src="./static/js/script.js"></script>
+
+</body>
+</html>
