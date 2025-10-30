@@ -245,25 +245,62 @@ function renderTable() {
 
 
 
-// === Render Chart ===
 function renderChart() {
-  const allianceData = getAllianceStats(currentType, currentYear);
+  const current = data[currentType]?.[currentYear];
+  if (!current) return;
+
+  const { parties, alliances } = current;
+
+  // destroy old chart
   if (chartInstance) chartInstance.destroy();
 
+  // get party colors by their alliance color
+  const colorMap = Object.fromEntries(alliances.map(a => [a.name, a.color]));
+
+// generate short labels for parties (handles parentheses)
+const labels = parties.map(p => {
+  let name = p.party.trim();
+
+  // Remove parentheses and their content, but keep useful abbreviations
+  if (name.includes("(")) {
+    const match = name.match(/\(([^)]+)\)/);
+    if (match && match[1].length <= 6) {
+      // if the parentheses contain a short term, use that directly (e.g., "Marxist" -> M)
+      const inner = match[1].replace(/[^A-Za-z]/g, "").toUpperCase();
+      // Example: "Communist Party of India (Marxist)" → "CPI(M)"
+      const main = name.split("(")[0].trim().split(" ").map(w => w[0].toUpperCase()).join("");
+      return `${main}(${inner[0]})`;
+    }
+    // otherwise, remove parentheses entirely
+    name = name.replace(/\(.*?\)/g, "").trim();
+  }
+
+  // abbreviation logic
+  if (name.length > 10) {
+    return name
+      .split(" ")
+      .map(w => w[0].toUpperCase())
+      .join("");
+  }
+  return name;
+});
+
+  const values = parties.map(p => p.won || 0);
+  const colors = parties.map(p => colorMap[p.alliance] + "cc");
+
+  // create chart
   chartInstance = new Chart(ctx, {
     type: "bar",
     data: {
-      labels: allianceData.map(a => a.name),
-      datasets: [
-        {
-          label: `${currentYear} Seats Won`,
-          data: allianceData.map(a => a.won),
-          backgroundColor: allianceData.map(a => a.color + "cc"),
-          borderColor: allianceData.map(a => a.color),
-          borderWidth: 1.5,
-          borderRadius: 10
-        }
-      ]
+      labels,
+      datasets: [{
+        label: `${currentYear} Seats Won`,
+        data: values,
+        backgroundColor: colors,
+        borderColor: parties.map(p => colorMap[p.alliance]),
+        borderWidth: 1.2,
+        borderRadius: 8
+      }]
     },
     options: {
       responsive: true,
@@ -271,7 +308,7 @@ function renderChart() {
         legend: { display: false },
         title: {
           display: true,
-          text: `Alliance-wise Seats Won — ${currentType === "AC" ? "Assembly" : "Parliament"} ${currentYear}`,
+          text: `Party-wise Seats Won — ${currentType === "AC" ? "Assembly" : "Parliament"} ${currentYear}`,
           font: { size: 16, weight: "bold" }
         },
         tooltip: {
@@ -284,22 +321,25 @@ function renderChart() {
         y: {
           beginAtZero: true,
           title: { display: true, text: "Seats Won" },
-          ticks: {
-            precision: 0,
-            stepSize: 10
-          }
+          ticks: { precision: 0, stepSize: 10 }
         },
         x: {
-          ticks: { font: { weight: "600" } }
+          ticks: {
+            font: { size: 10 },
+            autoSkip: false,
+            maxRotation: 60,
+            minRotation: 45
+          }
         }
       },
       animation: {
-        duration: 800,
+        duration: 700,
         easing: "easeOutQuart"
       }
     }
   });
 }
+
 // === Year Options ===
 function updateYearOptions(type) {
   yearSelect.innerHTML = "";
