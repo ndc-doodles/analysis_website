@@ -474,3 +474,26 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
+  AOS.init({ duration: 900, offset: 150, once: true });
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        document.querySelector('.news-nda-bar').style.width = '62%';
+        document.querySelector('.news-spa-bar').style.width = '33%';
+        document.querySelector('.news-others-bar').style.width = '5%';
+
+        document.querySelector('.tnvoice-nda-bar').style.width = '58%';
+        document.querySelector('.tnvoice-spa-bar').style.width = '36%';
+        document.querySelector('.tnvoice-others-bar').style.width = '6%';
+
+        document.querySelector('.regional-nda-bar').style.width = '60%';
+        document.querySelector('.regional-spa-bar').style.width = '32%';
+        document.querySelector('.regional-others-bar').style.width = '8%';
+      }
+    });
+  }, { threshold: 0.3 });
+
+  observer.observe(document.querySelector('#poll-predictions'));
+
+

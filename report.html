@@ -1,61 +1,75 @@
 <!DOCTYPE html>
 <html lang="ta">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>People's Voice - Polling Insights</title>
   <script src="https://cdn.tailwindcss.com"></script>
-<link rel="stylesheet" href="./static/css/style.css">
-<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Geist:wght@100..900&family=IBM+Plex+Serif:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Michroma&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Play:wght@400;700&family=Roboto:ital,wght@0,100..900;1,100..900&family=Rubik:ital,wght@0,300..900;1,300..900&family=Saira:ital,wght@0,100..900;1,100..900&family=Zalando+Sans+SemiExpanded:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
-<!-- Chart.js -->
+  <link rel="stylesheet" href="./static/css/style.css">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Geist:wght@100..900&family=IBM+Plex+Serif:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Michroma&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Play:wght@400;700&family=Roboto:ital,wght@0,100..900;1,100..900&family=Rubik:ital,wght@0,300..900;1,300..900&family=Saira:ital,wght@0,100..900;1,100..900&family=Zalando+Sans+SemiExpanded:ital,wght@0,200..900;1,200..900&display=swap"
+    rel="stylesheet">
+
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-  <!-- html2pdf -->
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 
   <style>
     .page-break {
       page-break-before: always;
     }
+
     @media print {
-      .no-print { display: none; }
+      .no-print {
+        display: none;
+      }
+    }
+
+    .page-break {
+      page-break-before: always;
     }
   </style>
 </head>
 
 <body class="overflow-x-hidden">
 
-  <!-- Navbar -->
+
   <nav id="navbar" class="navbar fixed w-full top-0 z-50 transition-all duration-500">
     <div class="max-w-7xl mx-auto px-6 md:px-10 flex justify-between items-center h-16 text-[white]">
 
-      <!-- Logo -->
+
       <a id="logoText" href="index.html" class="text-xl font-bold tracking-wide text-[#03024E]">People's Voice</a>
 
-      <!-- Right Section -->
+
       <div class="flex items-center space-x-4">
 
-        <!-- Desktop Toggle -->
+
         <div class="hidden md:flex items-center space-x-2">
           <span id="lang-label" class="text-[#03024E] font-semibold text-sm">TAMIL</span>
           <label class="relative inline-flex items-center cursor-pointer">
             <input type="checkbox" class="sr-only peer" id="lang-toggle">
             <div class="w-10 h-6 bg-gray-300 rounded-full peer-checked:bg-[#837AEC] transition-colors"></div>
-            <div class="absolute left-[2px] top-[2px] w-5 h-5 bg-[#03024E] rounded-full shadow-md peer-checked:translate-x-[18px] transition-transform duration-300"></div>
+            <div
+              class="absolute left-[2px] top-[2px] w-5 h-5 bg-[#03024E] rounded-full shadow-md peer-checked:translate-x-[18px] transition-transform duration-300">
+            </div>
           </label>
         </div>
 
-        <!-- Mobile Toggle -->
+
         <div class="flex md:hidden items-center space-x-2">
           <span id="mobile-lang-label" class="text-[#03024E] font-semibold text-sm">TAMIL</span>
           <label class="relative inline-flex items-center cursor-pointer">
             <input type="checkbox" class="sr-only peer" id="mobile-lang-toggle">
             <div class="w-10 h-6 bg-gray-300 rounded-full peer-checked:bg-blue-500 transition-colors"></div>
-            <div class="absolute left-[2px] top-[2px] w-5 h-5 bg-[#03024E] rounded-full shadow-md peer-checked:translate-x-[18px] transition-transform duration-300"></div>
+            <div
+              class="absolute left-[2px] top-[2px] w-5 h-5 bg-[#03024E] rounded-full shadow-md peer-checked:translate-x-[18px] transition-transform duration-300">
+            </div>
           </label>
         </div>
 
-        <!-- ✅ Animated SVG Menu Button -->
+
         <div class="nav-toggle">
           <input type="checkbox" id="menuToggle" />
           <svg viewBox="0 0 100 56">
@@ -67,17 +81,16 @@
     </div>
   </nav>
 
-  <!-- ✅ Sliding Menu Panel -->
-  <div id="menuPanel"
-       class="fixed top-0 right-0 h-full flex flex-col pt-20 space-y-4 shadow-2xl
+
+  <div id="menuPanel" class="fixed top-0 right-0 h-full flex flex-col pt-20 space-y-4 shadow-2xl
               w-3/4 md:w-1/4 z-50 p-8">
     <a href="index.html" class="menu-link ">Home</a>
     <a href="index.html#insights" class="menu-link ">Polling & Predictions</a>
     <a href="report.html" class="menu-link active">Election Poll Report</a>
-    
+
   </div>
 
-  <!-- SVG Symbol -->
+
   <svg xmlns="http://www.w3.org/2000/svg" style="display:none;">
     <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 56" id="menu">
       <path d="M48.33,45.6H18a14.17,14.17,0,0,1,0-28.34H78.86a17.37,17.37,0,0,1,0,34.74H42.33l-21-21.26L47.75,4" />
@@ -86,319 +99,385 @@
 
 
 
-  
 
-<!-- === Poll Report + Public Pulse Combined Section === -->
-<section id="poll-report" class="max-w-6xl mx-auto p-8 bg-white rounded-3xl mt-20">
 
-  <!-- Header + Download -->
-  <div class="flex justify-between items-center mb-8 no-print">
-    <button onclick="downloadReport()" class="bg-green-600 hover:bg-green-700 text-white px-5 py-2 rounded-lg text-sm">
-      Download PDF
-    </button>
-  </div>
 
-  <!-- === Page 1: Title + Overview === -->
-  <div class="mb-6">
-    <h1 class="text-4xl font-bold text-[#03024E] uppercase mb-4">Election Poll Report 2025</h1>
-  </div>
+  <section id="poll-report" class="max-w-6xl mx-auto p-8 bg-white rounded-3xl mt-20">
 
-  <!-- Overview -->
-  <div class="mb-10 border-b pb-6">
-    <h2 class="text-2xl font-semibold text-[#03024E] mb-3">Overall Summary</h2>
-    <p class="text-gray-600 leading-relaxed">
-      This report provides a comprehensive summary of the polling and prediction data for Tamil Nadu’s 2025 elections.
-      Data has been aggregated from multiple verified campaigns and social trend polls.
-    </p>
-  </div>
 
-  <!-- Public Pulse 2025 -->
-  <section id="public-pulse" class="bg-white pb-10">
-    <div class="max-w-6xl mx-auto">
-      <div class="mb-8">
-        <h2 class="text-3xl font-bold text-[#03024E] mb-2 uppercase">Public Pulse 2025</h2>
-        <p class="text-gray-600 text-lg mb-8 leading-relaxed">
-          Real-time insights from verified social media polls — see how people are leaning towards different alliances.
-        </p>
-      </div>
-
-      <!-- Summary Bars -->
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div class="bg-gray-50 rounded-2xl shadow-sm p-6">
-          <p class="text-gray-500 text-sm mb-2">Alliance</p>
-          <h3 class="text-xl font-semibold text-gray-800 mb-3">NDA (National Democratic Alliance)</h3>
-          <p class="text-gray-500 text-sm mb-3">AIADMK, PMK, BJP</p>
-          <div class="w-full bg-gray-200 rounded-full h-3 mb-3">
-            <div class="bg-green-600 h-3 rounded-full" style="width: 60%;"></div>
-          </div>
-          <p class="text-gray-600 text-sm">Public Support: 60%</p>
-        </div>
-
-        <div class="bg-gray-50 rounded-2xl shadow-sm p-6">
-          <p class="text-gray-500 text-sm mb-2">Alliance</p>
-          <h3 class="text-xl font-semibold text-gray-800 mb-3">SPA (Secular Progressive Alliance)</h3>
-          <p class="text-gray-500 text-sm mb-3">DMK, INC, VCK, CPI, CPI(M), IUML</p>
-          <div class="w-full bg-gray-200 rounded-full h-3 mb-3">
-            <div class="bg-blue-600 h-3 rounded-full" style="width: 35%;"></div>
-          </div>
-          <p class="text-gray-600 text-sm">Public Support: 35%</p>
-        </div>
-
-        <div class="bg-gray-50 rounded-2xl shadow-sm p-6 md:col-span-2">
-          <p class="text-gray-500 text-sm mb-2">Alliance</p>
-          <h3 class="text-xl font-semibold text-gray-800 mb-3">Others</h3>
-          <p class="text-gray-500 text-sm mb-3">Independent candidates and smaller regional parties</p>
-          <div class="w-full bg-gray-200 rounded-full h-3 mb-3">
-            <div class="bg-yellow-500 h-3 rounded-full" style="width: 5%;"></div>
-          </div>
-          <p class="text-gray-600 text-sm">Public Support: 5%</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Page Break for Pie Chart -->
-  <div class="page-break"></div>
-
-  <!-- === Page 2: Pie Chart === -->
-  <div class="bg-gray-50 rounded-2xl shadow-sm p-6 mt-8">
-    <h3 class="text-lg font-semibold text-gray-800 mb-4 text-center">
-      Alliance-wise Public Support (%)
-    </h3>
-    <canvas id="pollChart" class="w-full max-w-md mx-auto"></canvas>
-  </div>
-
-  <!-- Page Break before Tables -->
-  <div class="page-break"></div>
-
-  <!-- === Campaign Tables === -->
-  <div class="space-y-10">
-    <!-- Table 1 -->
-    <div class="border rounded-2xl p-4 sm:p-6 bg-white shadow-sm">
-      <h3 class="text-xl font-semibold text-[#03024E] mb-2">NewsTN Campaign</h3>
-      <table class="min-w-full text-sm border border-gray-300">
-        <thead class="bg-gray-100">
-          <tr class="text-left text-gray-700">
-            <th class="p-2 border">Alliance</th>
-            <th class="p-2 border">Predicted Seats</th>
-            <th class="p-2 border">Public Sentiment</th>
-            <th class="p-2 border">Rural Performance</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr><td class="p-2 border font-semibold">NDA</td><td class="p-2 border">145–160</td><td class="p-2 border">54%</td><td class="p-2 border">Strong</td></tr>
-          <tr><td class="p-2 border font-semibold">SPA</td><td class="p-2 border">70–90</td><td class="p-2 border">34%</td><td class="p-2 border">Moderate</td></tr>
-          <tr><td class="p-2 border font-semibold">Others</td><td class="p-2 border">5–10</td><td class="p-2 border">12%</td><td class="p-2 border">Weak</td></tr>
-        </tbody>
-      </table>
+    <div class="flex justify-between items-center mb-8 no-print">
+      <button onclick="downloadReport()"
+        class="bg-green-600 hover:bg-green-700 text-white px-5 py-2 rounded-lg text-sm">
+        Download PDF
+      </button>
     </div>
 
-    <!-- Table 2 -->
-    <div class="border rounded-2xl p-4 sm:p-6 bg-white shadow-sm">
-      <h3 class="text-xl font-semibold text-[#03024E] mb-2">IndiaVote Analytics</h3>
-      <table class="min-w-full text-sm border border-gray-300">
-        <thead class="bg-gray-100">
-          <tr class="text-left text-gray-700">
-            <th class="p-2 border">Alliance</th>
-            <th class="p-2 border">Predicted Seats</th>
-            <th class="p-2 border">Public Sentiment</th>
-            <th class="p-2 border">Rural Performance</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr><td class="p-2 border font-semibold">NDA</td><td class="p-2 border">150–165</td><td class="p-2 border">57%</td><td class="p-2 border">Strong</td></tr>
-          <tr><td class="p-2 border font-semibold">SPA</td><td class="p-2 border">65–80</td><td class="p-2 border">31%</td><td class="p-2 border">Moderate</td></tr>
-          <tr><td class="p-2 border font-semibold">Others</td><td class="p-2 border">10–15</td><td class="p-2 border">12%</td><td class="p-2 border">Weak</td></tr>
-        </tbody>
-      </table>
+
+    <div class="mb-6">
+      <h1 class="text-4xl font-bold text-[#03024E] uppercase mb-4">Election Poll Report 2025</h1>
     </div>
 
-    <div class="border rounded-2xl p-4 sm:p-6 bg-white shadow-sm"> <h3 class="text-xl sm:text-2xl font-semibold text-[#03024E] mb-2">Tamil Poll Watch</h3> <p class="text-xs sm:text-sm text-gray-500 mb-4"> Organized by: <b>ElectionMatrix</b> </p> <div class="overflow-x-auto"> <table class="min-w-full text-xs sm:text-sm border border-gray-300"> <thead class="bg-gray-100"> <tr class="text-left text-gray-700"> <th class="p-2 sm:p-3 border">Alliance</th> <th class="p-2 sm:p-3 border">Predicted Seats</th> <th class="p-2 sm:p-3 border">Public Sentiment</th> <th class="p-2 sm:p-3 border">Rural Performance</th> </tr> </thead> <tbody> <tr> <td class="p-2 sm:p-3 border font-semibold">NDA</td> <td class="p-2 sm:p-3 border">140–155</td> <td class="p-2 sm:p-3 border">52%</td> <td class="p-2 sm:p-3 border">Strong</td> </tr> <tr> <td class="p-2 sm:p-3 border font-semibold">SPA</td> <td class="p-2 sm:p-3 border">75–95</td> <td class="p-2 sm:p-3 border">36%</td> <td class="p-2 sm:p-3 border">Moderate</td> </tr> <tr> <td class="p-2 sm:p-3 border font-semibold">Others</td> <td class="p-2 sm:p-3 border">5–8</td> <td class="p-2 sm:p-3 border">12%</td> <td class="p-2 sm:p-3 border">Weak</td> </tr> </tbody> </table> </div>
-  </div>
 
-  <!-- Page Break before Final Summary -->
-  <div class="page-break"></div>
-
-  <!-- === Final Summary Section (also included in PDF) === -->
-  <section id="final-summary" class="bg-gradient-to-br from-blue-50 to-indigo-100 rounded-3xl shadow-lg p-6 sm:p-10 mt-10">
-    <h2 class="text-2xl sm:text-3xl font-bold text-[#03024E] mb-6 text-center">Final Prediction Summary</h2>
-
-    <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 text-center">
-      <div class="bg-white rounded-2xl p-6 shadow-sm">
-        <div class="relative w-24 h-24 mx-auto mb-3">
-          <svg class="w-full h-full transform -rotate-90">
-            <circle cx="50%" cy="50%" r="40%" stroke="#e5e7eb" stroke-width="10" fill="transparent" />
-            <circle id="nda-ring" cx="50%" cy="50%" r="40%" stroke="#16a34a" stroke-width="10" fill="transparent"
-              stroke-linecap="round" stroke-dasharray="251" stroke-dashoffset="251" />
-          </svg>
-          <span id="nda-percent" class="absolute inset-0 flex items-center justify-center text-xl font-bold text-green-700">0%</span>
-        </div>
-        <p class="text-lg font-semibold text-green-700">NDA</p>
-        <p class="text-gray-500 text-sm mt-1">Average Public Support</p>
-      </div>
-
-      <div class="bg-white rounded-2xl p-6 shadow-sm">
-        <div class="relative w-24 h-24 mx-auto mb-3">
-          <svg class="w-full h-full transform -rotate-90">
-            <circle cx="50%" cy="50%" r="40%" stroke="#e5e7eb" stroke-width="10" fill="transparent" />
-            <circle id="spa-ring" cx="50%" cy="50%" r="40%" stroke="#2563eb" stroke-width="10" fill="transparent"
-              stroke-linecap="round" stroke-dasharray="251" stroke-dashoffset="251" />
-          </svg>
-          <span id="spa-percent" class="absolute inset-0 flex items-center justify-center text-xl font-bold text-blue-700">0%</span>
-        </div>
-        <p class="text-lg font-semibold text-blue-700">SPA</p>
-        <p class="text-gray-500 text-sm mt-1">Average Public Support</p>
-      </div>
-
-      <div class="bg-white rounded-2xl p-6 shadow-sm">
-        <div class="relative w-24 h-24 mx-auto mb-3">
-          <svg class="w-full h-full transform -rotate-90">
-            <circle cx="50%" cy="50%" r="40%" stroke="#e5e7eb" stroke-width="10" fill="transparent" />
-            <circle id="others-ring" cx="50%" cy="50%" r="40%" stroke="#eab308" stroke-width="10" fill="transparent"
-              stroke-linecap="round" stroke-dasharray="251" stroke-dashoffset="251" />
-          </svg>
-          <span id="others-percent" class="absolute inset-0 flex items-center justify-center text-xl font-bold text-yellow-600">0%</span>
-        </div>
-        <p class="text-lg font-semibold text-yellow-600">Others</p>
-        <p class="text-gray-500 text-sm mt-1">Average Public Support</p>
-      </div>
-    </div>
-
-    <div class="bg-white mt-10 rounded-2xl p-6 sm:p-8 text-center shadow-inner border border-gray-200">
-      <p id="prediction-text" class="text-lg sm:text-xl font-semibold text-gray-800 leading-relaxed">
-        Scroll to view the final prediction...
-      </p>
-      <p class="text-sm text-gray-500 mt-3 italic">
-        Based on averaged data from all available campaign surveys.
+    <div class="mb-10 border-b pb-6">
+      <h2 class="text-2xl font-semibold text-[#03024E] mb-3">Overall Summary</h2>
+      <p class="text-gray-600 leading-relaxed">
+        This report provides a comprehensive summary of the polling and prediction data for Tamil Nadu’s 2025 elections.
+        Data has been aggregated from multiple verified campaigns and social trend polls.
       </p>
     </div>
+
+
+    <section id="public-pulse" class="bg-white pb-10">
+      <div class="max-w-6xl mx-auto">
+        <div class="mb-8">
+          <h2 class="text-3xl font-bold text-[#03024E] mb-2 uppercase">Public Pulse 2025</h2>
+          <p class="text-gray-600 text-lg mb-8 leading-relaxed">
+            Real-time insights from verified social media polls — see how people are leaning towards different
+            alliances.
+          </p>
+        </div>
+
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="bg-gray-50 rounded-2xl shadow-sm p-6">
+            <p class="text-gray-500 text-sm mb-2">Alliance</p>
+            <h3 class="text-xl font-semibold text-gray-800 mb-3">NDA (National Democratic Alliance)</h3>
+            <p class="text-gray-500 text-sm mb-3">AIADMK, PMK, BJP</p>
+            <div class="w-full bg-gray-200 rounded-full h-3 mb-3">
+              <div class="bg-green-600 h-3 rounded-full" style="width: 60%;"></div>
+            </div>
+            <p class="text-gray-600 text-sm">Public Support: 60%</p>
+          </div>
+
+          <div class="bg-gray-50 rounded-2xl shadow-sm p-6">
+            <p class="text-gray-500 text-sm mb-2">Alliance</p>
+            <h3 class="text-xl font-semibold text-gray-800 mb-3">SPA (Secular Progressive Alliance)</h3>
+            <p class="text-gray-500 text-sm mb-3">DMK, INC, VCK, CPI, CPI(M), IUML</p>
+            <div class="w-full bg-gray-200 rounded-full h-3 mb-3">
+              <div class="bg-blue-600 h-3 rounded-full" style="width: 35%;"></div>
+            </div>
+            <p class="text-gray-600 text-sm">Public Support: 35%</p>
+          </div>
+
+          <div class="bg-gray-50 rounded-2xl shadow-sm p-6 md:col-span-2">
+            <p class="text-gray-500 text-sm mb-2">Alliance</p>
+            <h3 class="text-xl font-semibold text-gray-800 mb-3">Others</h3>
+            <p class="text-gray-500 text-sm mb-3">Independent candidates and smaller regional parties</p>
+            <div class="w-full bg-gray-200 rounded-full h-3 mb-3">
+              <div class="bg-yellow-500 h-3 rounded-full" style="width: 5%;"></div>
+            </div>
+            <p class="text-gray-600 text-sm">Public Support: 5%</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <div class="page-break"></div>
+
+
+    <div class="bg-gray-50 rounded-2xl shadow-sm p-6 mt-8">
+      <h3 class="text-lg font-semibold text-gray-800 mb-4 text-center">
+        Alliance-wise Public Support (%)
+      </h3>
+      <canvas id="pollChart" class="w-full max-w-md mx-auto"></canvas>
+    </div>
+
+
+    <div class="page-break"></div>
+
+
+    <div class="space-y-10">
+
+      <div class="border rounded-2xl p-4 sm:p-6 bg-white shadow-sm">
+        <h3 class="text-xl font-semibold text-[#03024E] mb-2">NewsTN Campaign</h3>
+        <table class="min-w-full text-sm border border-gray-300">
+          <thead class="bg-gray-100">
+            <tr class="text-left text-gray-700">
+              <th class="p-2 border">Alliance</th>
+              <th class="p-2 border">Predicted Seats</th>
+              <th class="p-2 border">Public Sentiment</th>
+              <th class="p-2 border">Rural Performance</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="p-2 border font-semibold">NDA</td>
+              <td class="p-2 border">145–160</td>
+              <td class="p-2 border">54%</td>
+              <td class="p-2 border">Strong</td>
+            </tr>
+            <tr>
+              <td class="p-2 border font-semibold">SPA</td>
+              <td class="p-2 border">70–90</td>
+              <td class="p-2 border">34%</td>
+              <td class="p-2 border">Moderate</td>
+            </tr>
+            <tr>
+              <td class="p-2 border font-semibold">Others</td>
+              <td class="p-2 border">5–10</td>
+              <td class="p-2 border">12%</td>
+              <td class="p-2 border">Weak</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="border rounded-2xl p-4 sm:p-6 bg-white shadow-sm">
+        <h3 class="text-xl font-semibold text-[#03024E] mb-2">IndiaVote Analytics</h3>
+        <table class="min-w-full text-sm border border-gray-300">
+          <thead class="bg-gray-100">
+            <tr class="text-left text-gray-700">
+              <th class="p-2 border">Alliance</th>
+              <th class="p-2 border">Predicted Seats</th>
+              <th class="p-2 border">Public Sentiment</th>
+              <th class="p-2 border">Rural Performance</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="p-2 border font-semibold">NDA</td>
+              <td class="p-2 border">150–165</td>
+              <td class="p-2 border">57%</td>
+              <td class="p-2 border">Strong</td>
+            </tr>
+            <tr>
+              <td class="p-2 border font-semibold">SPA</td>
+              <td class="p-2 border">65–80</td>
+              <td class="p-2 border">31%</td>
+              <td class="p-2 border">Moderate</td>
+            </tr>
+            <tr>
+              <td class="p-2 border font-semibold">Others</td>
+              <td class="p-2 border">10–15</td>
+              <td class="p-2 border">12%</td>
+              <td class="p-2 border">Weak</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="border rounded-2xl p-4 sm:p-6 bg-white shadow-sm">
+        <h3 class="text-xl sm:text-2xl font-semibold text-[#03024E] mb-2">Tamil Poll Watch</h3>
+        <p class="text-xs sm:text-sm text-gray-500 mb-4"> Organized by: <b>ElectionMatrix</b> </p>
+        <div class="overflow-x-auto">
+          <table class="min-w-full text-xs sm:text-sm border border-gray-300">
+            <thead class="bg-gray-100">
+              <tr class="text-left text-gray-700">
+                <th class="p-2 sm:p-3 border">Alliance</th>
+                <th class="p-2 sm:p-3 border">Predicted Seats</th>
+                <th class="p-2 sm:p-3 border">Public Sentiment</th>
+                <th class="p-2 sm:p-3 border">Rural Performance</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="p-2 sm:p-3 border font-semibold">NDA</td>
+                <td class="p-2 sm:p-3 border">140–155</td>
+                <td class="p-2 sm:p-3 border">52%</td>
+                <td class="p-2 sm:p-3 border">Strong</td>
+              </tr>
+              <tr>
+                <td class="p-2 sm:p-3 border font-semibold">SPA</td>
+                <td class="p-2 sm:p-3 border">75–95</td>
+                <td class="p-2 sm:p-3 border">36%</td>
+                <td class="p-2 sm:p-3 border">Moderate</td>
+              </tr>
+              <tr>
+                <td class="p-2 sm:p-3 border font-semibold">Others</td>
+                <td class="p-2 sm:p-3 border">5–8</td>
+                <td class="p-2 sm:p-3 border">12%</td>
+                <td class="p-2 sm:p-3 border">Weak</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+
+      <div class="page-break"></div>
+
+
+      <section id="final-summary"
+        class="bg-gradient-to-br from-blue-50 to-indigo-100 rounded-3xl shadow-lg p-6 sm:p-10 mt-10">
+        <h2 class="text-2xl sm:text-3xl font-bold text-[#03024E] mb-6 text-center">Final Prediction Summary</h2>
+
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 text-center">
+          <div class="bg-white rounded-2xl p-6 shadow-sm">
+            <div class="relative w-24 h-24 mx-auto mb-3">
+              <svg class="w-full h-full transform -rotate-90">
+                <circle cx="50%" cy="50%" r="40%" stroke="#e5e7eb" stroke-width="10" fill="transparent" />
+                <circle id="nda-ring" cx="50%" cy="50%" r="40%" stroke="#16a34a" stroke-width="10" fill="transparent"
+                  stroke-linecap="round" stroke-dasharray="251" stroke-dashoffset="251" />
+              </svg>
+              <span id="nda-percent"
+                class="absolute inset-0 flex items-center justify-center text-xl font-bold text-green-700">0%</span>
+            </div>
+            <p class="text-lg font-semibold text-green-700">NDA</p>
+            <p class="text-gray-500 text-sm mt-1">Average Public Support</p>
+          </div>
+
+          <div class="bg-white rounded-2xl p-6 shadow-sm">
+            <div class="relative w-24 h-24 mx-auto mb-3">
+              <svg class="w-full h-full transform -rotate-90">
+                <circle cx="50%" cy="50%" r="40%" stroke="#e5e7eb" stroke-width="10" fill="transparent" />
+                <circle id="spa-ring" cx="50%" cy="50%" r="40%" stroke="#2563eb" stroke-width="10" fill="transparent"
+                  stroke-linecap="round" stroke-dasharray="251" stroke-dashoffset="251" />
+              </svg>
+              <span id="spa-percent"
+                class="absolute inset-0 flex items-center justify-center text-xl font-bold text-blue-700">0%</span>
+            </div>
+            <p class="text-lg font-semibold text-blue-700">SPA</p>
+            <p class="text-gray-500 text-sm mt-1">Average Public Support</p>
+          </div>
+
+          <div class="bg-white rounded-2xl p-6 shadow-sm">
+            <div class="relative w-24 h-24 mx-auto mb-3">
+              <svg class="w-full h-full transform -rotate-90">
+                <circle cx="50%" cy="50%" r="40%" stroke="#e5e7eb" stroke-width="10" fill="transparent" />
+                <circle id="others-ring" cx="50%" cy="50%" r="40%" stroke="#eab308" stroke-width="10" fill="transparent"
+                  stroke-linecap="round" stroke-dasharray="251" stroke-dashoffset="251" />
+              </svg>
+              <span id="others-percent"
+                class="absolute inset-0 flex items-center justify-center text-xl font-bold text-yellow-600">0%</span>
+            </div>
+            <p class="text-lg font-semibold text-yellow-600">Others</p>
+            <p class="text-gray-500 text-sm mt-1">Average Public Support</p>
+          </div>
+        </div>
+
+        <div class="bg-white mt-10 rounded-2xl p-6 sm:p-8 text-center shadow-inner border border-gray-200">
+          <p id="prediction-text" class="text-lg sm:text-xl font-semibold text-gray-800 leading-relaxed">
+            Scroll to view the final prediction...
+          </p>
+          <p class="text-sm text-gray-500 mt-3 italic">
+            Based on averaged data from all available campaign surveys.
+          </p>
+        </div>
+      </section>
+
+
+      <div class="text-center text-gray-500 text-sm mt-10 border-t pt-4">
+        Report generated on <b id="date"></b> | Data compiled from verified polls and campaigns
+      </div>
   </section>
 
-  <!-- Footer -->
-  <div class="text-center text-gray-500 text-sm mt-10 border-t pt-4">
-    Report generated on <b id="date"></b> | Data compiled from verified polls and campaigns
-  </div>
-</section>
 
-<!-- === Scripts === -->
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-  const dateEl = document.getElementById("date");
-  if (dateEl) dateEl.innerText = new Date().toLocaleDateString();
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const dateEl = document.getElementById("date");
+      if (dateEl) dateEl.innerText = new Date().toLocaleDateString();
 
-  const chartEl = document.getElementById("pollChart");
-  if (chartEl && typeof Chart !== "undefined") {
-    new Chart(chartEl, {
-      type: "doughnut",
-      data: {
-        labels: ["NDA", "SPA", "Others"],
-        datasets: [{ data: [60, 35, 5], backgroundColor: ["#16a34a", "#2563eb", "#eab308"] }]
-      },
-      options: { plugins: { legend: { position: "bottom" } } }
-    });
-  }
-
-  // Include Final Summary in PDF
-  window.downloadReport = function () {
-    const element = document.getElementById('poll-report');
-    document.querySelectorAll('.no-print').forEach(el => el.style.display = 'none');
-    const opt = {
-      margin: 0.3,
-      filename: 'TamilNadu_Poll_Report_2025.pdf',
-      image: { type: 'jpeg', quality: 0.98 },
-      html2canvas: { scale: 2, useCORS: true },
-      jsPDF: { unit: 'in', format: 'a4', orientation: 'portrait' }
-    };
-    html2pdf().set(opt).from(element).save().then(() => {
-      document.querySelectorAll('.no-print').forEach(el => el.style.display = '');
-    });
-  };
-});
-</script>
-
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-  const campaigns = [
-    { nda: 54, spa: 34, others: 12 },
-    { nda: 57, spa: 31, others: 12 },
-    { nda: 52, spa: 36, others: 12 }
-  ];
-
-  const avg = campaigns.reduce((acc, c) => ({
-    nda: acc.nda + c.nda, spa: acc.spa + c.spa, others: acc.others + c.others
-  }), { nda: 0, spa: 0, others: 0 });
-
-  const total = campaigns.length;
-  const avgNDA = (avg.nda / total).toFixed(1);
-  const avgSPA = (avg.spa / total).toFixed(1);
-  const avgOthers = (avg.others / total).toFixed(1);
-  const maxCircle = 251;
-
-  function animateRing(id, percent) {
-    const circle = document.getElementById(id);
-    const percentElem = document.getElementById(id.replace("ring", "percent"));
-    let progress = 0;
-    const interval = setInterval(() => {
-      if (progress >= percent) return clearInterval(interval);
-      const offset = maxCircle - (progress / 100) * maxCircle;
-      circle.style.strokeDashoffset = offset;
-      percentElem.textContent = progress.toFixed(0) + "%";
-      progress += 1;
-    }, 15);
-  }
-
-  function updatePredictionText() {
-    const result = [
-      { name: "NDA", value: avgNDA, color: "#16a34a" },
-      { name: "SPA", value: avgSPA, color: "#2563eb" },
-      { name: "Others", value: avgOthers, color: "#eab308" }
-    ].sort((a, b) => b.value - a.value)[0];
-    let verdict = result.value > 55
-      ? "is strongly favored to form the next government."
-      : result.value >= 45
-      ? "holds a slight edge in the upcoming election."
-      : "faces a competitive race ahead.";
-    document.getElementById("prediction-text").innerHTML =
-      `<b style="color:${result.color}">${result.name}</b> leads with an average of <b>${result.value}%</b> support and ${verdict}`;
-  }
-
-  const summary = document.getElementById("final-summary");
-  let done = false;
-  new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (e.isIntersecting && !done) {
-        done = true;
-        animateRing("nda-ring", avgNDA);
-        animateRing("spa-ring", avgSPA);
-        animateRing("others-ring", avgOthers);
-        updatePredictionText();
+      const chartEl = document.getElementById("pollChart");
+      if (chartEl && typeof Chart !== "undefined") {
+        new Chart(chartEl, {
+          type: "doughnut",
+          data: {
+            labels: ["NDA", "SPA", "Others"],
+            datasets: [{ data: [60, 35, 5], backgroundColor: ["#16a34a", "#2563eb", "#eab308"] }]
+          },
+          options: { plugins: { legend: { position: "bottom" } } }
+        });
       }
+
+      // Include Final Summary in PDF
+      window.downloadReport = function () {
+        const element = document.getElementById('poll-report');
+        document.querySelectorAll('.no-print').forEach(el => el.style.display = 'none');
+        const opt = {
+          margin: 0.3,
+          filename: 'TamilNadu_Poll_Report_2025.pdf',
+          image: { type: 'jpeg', quality: 0.98 },
+          html2canvas: { scale: 2, useCORS: true },
+          jsPDF: { unit: 'in', format: 'a4', orientation: 'portrait' }
+        };
+        html2pdf().set(opt).from(element).save().then(() => {
+          document.querySelectorAll('.no-print').forEach(el => el.style.display = '');
+        });
+      };
     });
-  }, { threshold: 0.4 }).observe(summary);
-});
-</script>
+  </script>
 
-<style>
-.page-break { page-break-before: always; }
-</style>
-<footer class="bg-[#03024E] text-white py-6 mt-20">
-  <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between px-6 gap-6 text-sm">
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const campaigns = [
+        { nda: 54, spa: 34, others: 12 },
+        { nda: 57, spa: 31, others: 12 },
+        { nda: 52, spa: 36, others: 12 }
+      ];
 
-    <!-- Left -->
-    <p class="text-center md:text-left">© 2025 People's Voice. All Rights Reserved.</p>
+      const avg = campaigns.reduce((acc, c) => ({
+        nda: acc.nda + c.nda, spa: acc.spa + c.spa, others: acc.others + c.others
+      }), { nda: 0, spa: 0, others: 0 });
 
-    <!-- Right -->
-    <nav class="flex flex-col sm:flex-row items-center gap-3 sm:gap-6 text-center">
-      <a href="index.html" class="hover:text-gray-300 transition">Home</a>
-      <a href="index.html#insights" class="hover:text-gray-300 transition">Polling & Predictions</a>
-      <a href="report.html" class="hover:text-gray-300 transition">Election Poll Report</a>
-    </nav>
+      const total = campaigns.length;
+      const avgNDA = (avg.nda / total).toFixed(1);
+      const avgSPA = (avg.spa / total).toFixed(1);
+      const avgOthers = (avg.others / total).toFixed(1);
+      const maxCircle = 251;
 
-  </div>
-</footer>
+      function animateRing(id, percent) {
+        const circle = document.getElementById(id);
+        const percentElem = document.getElementById(id.replace("ring", "percent"));
+        let progress = 0;
+        const interval = setInterval(() => {
+          if (progress >= percent) return clearInterval(interval);
+          const offset = maxCircle - (progress / 100) * maxCircle;
+          circle.style.strokeDashoffset = offset;
+          percentElem.textContent = progress.toFixed(0) + "%";
+          progress += 1;
+        }, 15);
+      }
+
+      function updatePredictionText() {
+        const result = [
+          { name: "NDA", value: avgNDA, color: "#16a34a" },
+          { name: "SPA", value: avgSPA, color: "#2563eb" },
+          { name: "Others", value: avgOthers, color: "#eab308" }
+        ].sort((a, b) => b.value - a.value)[0];
+        let verdict = result.value > 55
+          ? "is strongly favored to form the next government."
+          : result.value >= 45
+            ? "holds a slight edge in the upcoming election."
+            : "faces a competitive race ahead.";
+        document.getElementById("prediction-text").innerHTML =
+          `<b style="color:${result.color}">${result.name}</b> leads with an average of <b>${result.value}%</b> support and ${verdict}`;
+      }
+
+      const summary = document.getElementById("final-summary");
+      let done = false;
+      new IntersectionObserver(entries => {
+        entries.forEach(e => {
+          if (e.isIntersecting && !done) {
+            done = true;
+            animateRing("nda-ring", avgNDA);
+            animateRing("spa-ring", avgSPA);
+            animateRing("others-ring", avgOthers);
+            updatePredictionText();
+          }
+        });
+      }, { threshold: 0.4 }).observe(summary);
+    });
+  </script>
+
+  <footer class="bg-[#03024E] text-white py-6 mt-20">
+    <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between px-6 gap-6 text-sm">
+
+    
+      <p class="text-center md:text-left">© 2025 People's Voice. All Rights Reserved.</p>
+
+   
+      <nav class="flex flex-col sm:flex-row items-center gap-3 sm:gap-6 text-center">
+        <a href="index.html" class="hover:text-gray-300 transition">Home</a>
+        <a href="index.html#insights" class="hover:text-gray-300 transition">Polling & Predictions</a>
+        <a href="report.html" class="hover:text-gray-300 transition">Election Poll Report</a>
+      </nav>
+
+    </div>
+  </footer>
 
 
-<script src="./static/js/script.js"></script>
+  <script src="./static/js/script.js"></script>
 
 
 
@@ -406,4 +485,5 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 </body>
+
 </html>
